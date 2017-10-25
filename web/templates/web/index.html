@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <meta charset="UTF-8">
+    <title>XAIC Web</title>
+</head>
+<body>
+    <div>INDEX PAGE</div>
+    {% for menu in Menu %}
+    <a href ="{% url 'menu_detail' pk=menu.pk %}" >{{menu.titleen}}</a>
+    {% endfor %}
+
+    <div>내용들어갈 곳 현재 INDEX</div>
+</body>
+</html>
