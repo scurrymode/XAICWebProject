@@ -9,7 +9,7 @@
 <body>
     <div>INDEX PAGE</div>
     {% for menu in Menu %}
-    <a href ="{% url 'menu_detail' pk=menu.pk %}" >{{menu.titleen}}</a>
+    <a href ="{% url 'menu_detail' submenu=menu.titleen %}" >{{menu.titleen}}</a>
     {% endfor %}
 
     <div>내용들어갈 곳 현재 INDEX</div>

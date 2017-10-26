@@ -7,6 +7,18 @@ class TopMenu(models.Model):
     titleko = models.CharField(max_length=100)
     titleen = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.titleen
+
+
+class SubMenu(models.Model):
+    titleko = models.CharField(max_length=100)
+    titleen = models.CharField(max_length=100)
+    topmenu_id = models.ForeignKey(TopMenu)
+
+    def __str__(self):
+        return self.titleen
+
 class Greeting(models.Model):
     titleko = models.CharField(max_length=100)
     titleen = models.CharField(max_length=100)
@@ -15,7 +27,10 @@ class Greeting(models.Model):
     contentko = models.TextField()
     contenten = models.TextField()
     image = models.CharField(max_length=100)
-    topmenu_id = models.ForeignKey(TopMenu)
+    submenu_id = models.ForeignKey(SubMenu)
+
+    def __str__(self):
+        return self.titleen
 
 class About(models.Model):
     titleko = models.CharField(max_length=100)
@@ -25,7 +40,10 @@ class About(models.Model):
     contentko = models.TextField()
     contenten = models.TextField()
     image = models.CharField(max_length=100)
-    topmenu_id = models.ForeignKey(TopMenu)
+    submenu_id = models.ForeignKey(SubMenu)
+
+    def __str__(self):
+        return self.titleen
 
 class Member(models.Model):
     titleko = models.CharField(max_length=100)
@@ -35,7 +53,10 @@ class Member(models.Model):
     careerko = models.TextField()
     careeren = models.TextField()
     image = models.CharField(max_length=100)
-    topmenu_id = models.ForeignKey(TopMenu)
+    submenu_id = models.ForeignKey(SubMenu)
+
+    def __str__(self):
+        return self.titleen
 
 class LectureNote(models.Model):
     titleko = models.CharField(max_length=100)
@@ -43,7 +64,10 @@ class LectureNote(models.Model):
     contentko = models.TextField()
     contenten = models.TextField()
     image = models.CharField(max_length=100)
-    topmenu_id = models.ForeignKey(TopMenu)
+    submenu_id = models.ForeignKey(SubMenu)
+
+    def __str__(self):
+        return self.titleen
 
 class LectureVideo(models.Model):
     titleko = models.CharField(max_length=100)
@@ -51,7 +75,10 @@ class LectureVideo(models.Model):
     contentko = models.TextField()
     contenten = models.TextField()
     link = models.CharField(max_length=100)
-    topmenu_id = models.ForeignKey(TopMenu)
+    submenu_id = models.ForeignKey(SubMenu)
+
+    def __str__(self):
+        return self.titleen
 
 class DemoResource(models.Model):
     titleko = models.CharField(max_length=100)
@@ -59,7 +86,10 @@ class DemoResource(models.Model):
     contentko = models.TextField()
     contenten = models.TextField()
     image = models.CharField(max_length=100)
-    topmenu_id = models.ForeignKey(TopMenu)
+    submenu_id = models.ForeignKey(SubMenu)
+
+    def __str__(self):
+        return self.titleen
 
 class Publication(models.Model):
     titleko = models.CharField(max_length=100)
@@ -67,7 +97,10 @@ class Publication(models.Model):
     contentko = models.TextField()
     contenten = models.TextField()
     image = models.CharField(max_length=100)
-    topmenu_id = models.ForeignKey(TopMenu)
+    submenu_id = models.ForeignKey(SubMenu)
+
+    def __str__(self):
+        return self.titleen
 
 class Patent(models.Model):
     titleko = models.CharField(max_length=100)
@@ -75,7 +108,10 @@ class Patent(models.Model):
     contentko = models.TextField()
     contenten = models.TextField()
     image = models.CharField(max_length=100)
-    topmenu_id = models.ForeignKey(TopMenu)
+    submenu_id = models.ForeignKey(SubMenu)
+
+    def __str__(self):
+        return self.titleen
 
 class Notice(models.Model):
     titleko = models.CharField(max_length=100)
@@ -85,7 +121,10 @@ class Notice(models.Model):
     contentko = models.TextField()
     contenten = models.TextField()
     image = models.CharField(max_length=100)
-    topmenu_id = models.ForeignKey(TopMenu)
+    submenu_id = models.ForeignKey(SubMenu)
+
+    def __str__(self):
+        return self.titleen
 
 class News(models.Model):
     titleko = models.CharField(max_length=100)
@@ -93,7 +132,10 @@ class News(models.Model):
     contentko = models.TextField()
     contenten = models.TextField()
     image = models.CharField(max_length=100)
-    topmenu_id = models.ForeignKey(TopMenu)
+    submenu_id = models.ForeignKey(SubMenu)
+
+    def __str__(self):
+        return self.titleen
 
 class Gallery(models.Model):
     titleko = models.CharField(max_length=100)
@@ -103,7 +145,10 @@ class Gallery(models.Model):
     contentko = models.TextField()
     contenten = models.TextField()
     image = models.CharField(max_length=100)
-    topmenu_id = models.ForeignKey(TopMenu)
+    submenu_id = models.ForeignKey(SubMenu)
+
+    def __str__(self):
+        return self.titleen
 
 class Community(models.Model):
     titleko = models.CharField(max_length=100)
@@ -113,4 +158,7 @@ class Community(models.Model):
     contentko = models.TextField()
     contenten = models.TextField()
     image = models.CharField(max_length=100)
-    topmenu_id = models.ForeignKey(TopMenu)
+    submenu_id = models.ForeignKey(SubMenu)
+
+    def __str__(self):
+        return self.titleen

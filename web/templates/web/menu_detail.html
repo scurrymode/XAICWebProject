@@ -5,6 +5,13 @@
     <title>MENU_DETAIL</title>
 </head>
 <body>
-    <div>{{menu.titleko}}</div>
+    <div>{{topMenu.titleko}}</div>
+    <div>
+        <li>
+            {% for subMenu in subMenus %}
+            <ul>{{subMenu.titleen}}</ul>
+            {% endfor %}
+        </li>
+    </div>
 </body>
 </html>

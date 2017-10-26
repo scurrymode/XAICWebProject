@@ -4,5 +4,5 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
-    url(r'^menu/(?P<pk>\d+)/$', views.menu_detail, name='menu_detail'),
+    url(r'^(?P<submenu>.+)/$', views.menu_detail, name='menu_detail'),
 ]
