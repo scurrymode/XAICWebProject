@@ -1,17 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <meta charset="UTF-8">
-    <title>XAIC Web</title>
-</head>
-<body>
-    <div>INDEX PAGE</div>
-    {% for menu in Menu %}
-    <a href ="{% url 'menu_detail' submenu=menu.titleen %}" >{{menu.titleen}}</a>
-    {% endfor %}
+{% extends "base.html" %}
+{% block header %}
+<div class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/"><span>X</span>AIC</a>
+        </div>
+        <div class="navbar-collapse collapse ">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="/">Home</a></li>
+                {% if subMenuDict is None %}
+                {% with subMenuDict as model.subMenuDict %}
+                {% for key, value in subMenuDict.items %}
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">{{key}}<b class=" icon-angle-down"></b></a>
+                    <ul class="dropdown-menu">
+                        {% for subMenu in value %}
+                        {% with subMenu.titleen|lower as urlvar %}
+                        <li><a href ="{% url urlvar %}">{{subMenu.titleen}}</a></li>
+                        {% endwith %}
+                        {% endfor %}
+                    </ul>
+                </li>
+                {% endfor %}
+                {% endwith %}
 
-    <div>내용들어갈 곳 현재 INDEX</div>
+                {% else %}
+                {% for key, value in subMenuDict.items %}
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">{{key}}<b class=" icon-angle-down"></b></a>
+                    <ul class="dropdown-menu">
+                        {% for subMenu in value %}
+                        {% with subMenu.titleen|lower as urlvar %}
+                        <li><a href ="{% url urlvar %}">{{subMenu.titleen}}</a></li>
+                        {% endwith %}
+                        {% endfor %}
+                    </ul>
+                </li>
+                {% endfor %}
+                {% endif %}
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock header %}
+{% block content %}
+<div>내용들어갈 곳 현재 INDEX</div>
+{% endblock content %}
+{% block script %}
+{% endblock script %}
 </body>
 </html>
