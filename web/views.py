@@ -39,13 +39,17 @@ class GreetingPage(TemplateView):
 
 class MemberImageList(ListView):
     model = Member
-    template_name = 'web/member.html'
-    context_object_name = 'members'
-    paginate_by = 10
-    queryset = Member.objects.all()
+    template_name = 'web/member.html'  # Default: <app_label>/<model_name>_list.html
+    # context_object_name = 'member_list'
+    paginate_by = 5
+    queryset = Member.objects.order_by('-id')  # 역순으로 보여주기
 
-    def get(self, request):
-        return render(request, self.template_name, {'subMenuDict':getSubMenuDict()})
+    # context={ 'context_object_name':'news_list', 'subMenuDict':getSubMenuDict() }
+    def get_context_data(self, **kwargs):
+        context = super(MemberImageList, self).get_context_data(**kwargs)
+        context['object_name'] = 'member_list'
+        context['subMenuDict'] = getSubMenuDict()
+        return context
 
 class LabTextList(ListView):
     model = Lab
@@ -77,7 +81,7 @@ class NoticeTextList(ListView):
 class NewsImageList(ListView):
     model = News
     template_name = 'web/news.html'  # Default: <app_label>/<model_name>_list.html
-    context_object_name = 'news_list'
+    # context_object_name = 'news_list'
     paginate_by = 5
     queryset = News.objects.order_by('-id') #역순으로 보여주기
     # context={ 'context_object_name':'news_list', 'subMenuDict':getSubMenuDict() }
