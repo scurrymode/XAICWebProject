@@ -15,7 +15,7 @@
     {% for member in member_list %}
       <tr>
         <td>{{ member.nameen }}</td>
-        <td><img src="/static/img/upload/member/DSC01379.JPG"></td>
+        <td><img src="{{member.testImage.url}}"></td>
         <td>{{ member.positionen }}</td>
         <td>{{ member.departmenten }}</td>
         <td>{{ member.educationen }}</td>

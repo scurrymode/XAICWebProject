@@ -36,10 +36,16 @@ def getSubMenuDict():
 # ListView
 class GreetingPage(TemplateView):
     model = Greeting
+    template_name = 'web/greetingTemp.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(GreetingPage, self).get_context_data(**kwargs)
+        context['subMenuDict'] = getSubMenuDict()
+        return context
 
 class MemberImageList(ListView):
     model = Member
-    template_name = 'web/member.html'  # Default: <app_label>/<model_name>_list.html
+    template_name = 'web/memberTemp.html'  # Default: <app_label>/<model_name>_list.html
     # context_object_name = 'member_list'
     paginate_by = 5
     queryset = Member.objects.order_by('-id')  # 역순으로 보여주기
@@ -53,30 +59,86 @@ class MemberImageList(ListView):
 
 class LabTextList(ListView):
     model = Lab
+    template_name = 'web/lab_detailTemp.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(LabTextList, self).get_context_data(**kwargs)
+        context['subMenuDict'] = getSubMenuDict()
+        return context
+
 
 class ProjectPage(TemplateView):
     model = Project
+    template_name = 'web/preparing.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ProjectPage, self).get_context_data(**kwargs)
+        context['subMenuDict'] = getSubMenuDict()
+        return context
 
 class LecturenoteImageList(ListView):
     model = LectureNote
+    template_name = 'web/preparing.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(LecturenoteImageList, self).get_context_data(**kwargs)
+        context['subMenuDict'] = getSubMenuDict()
+        return context
 
 class LecturevideoVideoList(ListView):
     model = LectureVideo
+    template_name = 'web/preparing.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(LecturevideoVideoList, self).get_context_data(**kwargs)
+        context['subMenuDict'] = getSubMenuDict()
+        return context
+
 
 class DemoresourceImageList(ListView):
     model = DemoResource
+    template_name = 'web/preparing.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(DemoresourceImageList, self).get_context_data(**kwargs)
+        context['subMenuDict'] = getSubMenuDict()
+        return context
 
 class PublicationTextList(ListView):
     model = Publication
+    template_name = 'web/preparing.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(PublicationTextList, self).get_context_data(**kwargs)
+        context['subMenuDict'] = getSubMenuDict()
+        return context
 
 class PatentTextList(ListView):
     model = Patent
+    template_name = 'web/preparing.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(PatentTextList, self).get_context_data(**kwargs)
+        context['subMenuDict'] = getSubMenuDict()
+        return context
 
 class ReportTextList(ListView):
     model = Report
+    template_name = 'web/preparing.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ReportTextList, self).get_context_data(**kwargs)
+        context['subMenuDict'] = getSubMenuDict()
+        return context
 
 class NoticeTextList(ListView):
     model = Notice
+    template_name = 'web/preparing.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(NoticeTextList, self).get_context_data(**kwargs)
+        context['subMenuDict'] = getSubMenuDict()
+        return context
 
 class NewsImageList(ListView):
     model = News
@@ -95,15 +157,33 @@ class NewsImageList(ListView):
 
 class GalleryImageList(ListView):
     model = Gallery
+    template_name = 'web/gallery.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(GalleryImageList, self).get_context_data(**kwargs)
+        context['subMenuDict'] = getSubMenuDict()
+        return context
 
 class CommunityBoard(ListView):
     model = Community
+    template_name = 'web/preparing.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(CommunityBoard, self).get_context_data(**kwargs)
+        context['subMenuDict'] = getSubMenuDict()
+        return context
 
 class NewsDetail(DetailView):
     model = News
+    template_name = 'web/preparing.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(NewsDetail, self).get_context_data(**kwargs)
+        context['subMenuDict'] = getSubMenuDict()
+        return context
 
 def githubRedirect(request):
-    return redirect('https://www.naver.com/')
+    return redirect('http://sail.unist.ac.kr')
 
 def Contact(request):
     topMenus = TopMenu.objects.all()
