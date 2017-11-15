@@ -1,5 +1,4 @@
 {% extends "web/index.html" %}
-{% block title %}contact{% endblock title %}
 {% load static %}
 {% block content %}
 	<section id="inner-headline">
@@ -15,17 +14,13 @@
 		</div>
 	</section>
 	<section id="content">
-		<div class="map">
-			<div id="google-map" ></div>
-			<!-- google map 1일 허용량이 25,000 건이라 네이버로 변경함
-				style="width:100%;height:400px;"
-				<div id="google-map" data-latitude="40.713732" data-longitude="-74.0092704"></div> -->
-		</div>
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2">
+					<div class="map">
+						<div id="naver-map" style="width:100%;height:400px;"></div>
+	  				</div>
 					<h4>Get in touch with us by filling <strong>contact form below</strong></h4>
-
 					<div id="sendmessage">Your message has been sent. Thank you!</div>
 					<div id="errormessage"></div>
 					<form action="" method="post" role="form" class="contactForm">
@@ -56,39 +51,14 @@
 	<!-- javascript
     ================================================== -->
 {% block script %}
-	<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=g9DAE7AOMF4rEJUbJ0Kr&submodules=geocoder"></script>
+	<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=g9DAE7AOMF4rEJUbJ0Kr"></script>
 	<script>
-	//좌표값을 직접 안넣고 검색해서 기본화면이 한번떴다가 바뀜
-	var myaddress = '유니스트길 50';
-	naver.maps.Service.geocode({address: myaddress}, function(status, response) {
-          if (status !== naver.maps.Service.Status.OK) {
-              return alert(myaddress + '의 검색 결과가 없거나 기타 네트워크 에러');
-          }
-          var result = response.result;
-          // 검색 결과 갯수: result.total
-          // 첫번째 결과 결과 주소: result.items[0].address
-          // 첫번째 검색 결과 좌표: result.items[0].point.y, result.items[0].point.x
-          var myaddr = new naver.maps.Point(result.items[0].point.x, result.items[0].point.y);
-          map.setCenter(myaddr); // 검색된 좌표로 지도 이동
-          // 마커 표시
-          var marker = new naver.maps.Marker({
-            position: myaddr,
-            map: map
-          });
-          // 마커 클릭 이벤트 처리
-          naver.maps.Event.addListener(marker, "click", function(e) {
-            if (infowindow.getMap()) {
-                infowindow.close();
-            } else {
-                infowindow.open(map, marker);
-            }
-          });
-          // 마크 클릭시 인포윈도우 오픈
-          var infowindow = new naver.maps.InfoWindow({
-              content: '<h4> [XAIC]</h4>"></a>'
-          });
-      });
-	var map = new naver.maps.Map('google-map');
+		// http://blog.goodkiss.co.kr/entry/ 좌표값 알아내는 사이트 
+		var mapOptions = {
+		    center: new naver.maps.LatLng(35.5749100, 129.1892066),
+		    zoom: 10
+		};
+		var map = new naver.maps.Map('naver-map', mapOptions);
 	</script>
 {% endblock script %}
 

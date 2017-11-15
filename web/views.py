@@ -69,7 +69,7 @@ class LabTextList(ListView):
 
 class ProjectPage(TemplateView):
     model = Project
-    template_name = 'web/preparing.html'
+    template_name = 'web/projectTemp.html'
 
     def get_context_data(self, **kwargs):
         context = super(ProjectPage, self).get_context_data(**kwargs)
